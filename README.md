@@ -1,11 +1,17 @@
 # Overview
-This is script for an automated fan control for the Raspberry-Pi. It sets the fan speed depending on the chip temperature. There is even a silentime, where the fan should not spin (f.a at night if the Raspberry-Pi is in your Bedroom and you want to keep it quiet)
+This is script for an automated fan control for the Raspberry-Pi. It sets the fan speed depending on the chip temperature. There is even a silentime, where the fan should not spin (e.g. at night if the Raspberry-Pi is in your Bedroom and you want to keep it quiet)
 
 # Setup - Hardware
 Wiring:  
 ![alt text](https://github.com/Fload2000/Autofan/blob/master/src/img/wiring.png "Wiring")
 
-# Setup - Script
+# Setup/Customize - Script
+There a basically three things you can setup/customize in this script:
+### (1) FanPin
+
+### (2) Desired temperature of the CPU
+
+### (3) Time when the fan should not spin
 
 
 # Start script on startup
@@ -28,7 +34,7 @@ First type in the following command:
 ```
 If you are not familiar with vim, use nano.  
 Then insert the following lines:
-```vim
+```sh
 [Unit]
 Description=Autofan
 After=multi-user.target
@@ -63,7 +69,7 @@ First type in the following command:
 If you are not familiar with vim, use nano.
 
 You should see the following text:
-```vim
+```sh
 #!/bin/sh -e
 #
 # rc.local

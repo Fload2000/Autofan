@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 # The Pin ID of the Fan
-fanPin = 17 				
+fanPin = 17
 
 # The maximum temperature in Celsius after which we trigger the fan
 desiredTemp = 36
@@ -126,7 +126,7 @@ try:
 # trap a CTRL+C keyboard interrupt 
 except KeyboardInterrupt:
 	# Switch the fans off
-	fanOFF()	
+	fanOFF()
 finally:
 	# Reset all GPIO ports used by this script
 	GPIO.cleanup()
