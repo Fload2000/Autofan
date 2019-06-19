@@ -10,6 +10,80 @@ Wiring:
 
 # Start script on startup
 
+## Cronjob
+First type in the following command: 
+```sh
+~ crontab -e
+```
+Then enter this line (but change the path to the directory where the script is located on your Pi):
+```sh
+@reboot sudo python /home/user/autofan.py &
+```
+Close the editor and reboot. The script should start now during the startup.
+
+## Systemd
+First type in the following command:
+```sh
+~ sudo vim /etc/systemd/system/autofan.service
+```
+If you are not familiar with vim, use nano.  
+Then insert the following lines:
+```vim
+[Unit]
+Description=Autofan
+After=multi-user.target
+
+[Service]
+Type=simple
+User=user
+Group=user
+ExecStart=/usr/bin/python /home/user/autofan.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+```
+(In case you have to edit the service file later on, you have to run `~ systemctl daemon-reload` so systemd knows you changed something)
+Save the file and run following command:
+```sh
+~ sudo systemctl enable autofan
+```
+This should enable the service.
+Now we only have to start the service, which could be done by the following command:
+```sh
+~ sudo systemctl start autofan
+```
+
+## rc.local
+First type in the following command:
+```sh
+~ sudo vim /etc/rc.local
+```
+If you are not familiar with vim, use nano.
+
+You should see the following text:
+```vim
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+exit 0
+```
+Now write before the `exit 0` following line (but change the path to the directory where the script is located on your Pi):
+```sh
+/usr/bin/python /home/user/autofan.py
+```
+Now you can save the file and the scipt should autostart.
 
 # License
 
@@ -35,5 +109,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
