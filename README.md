@@ -2,7 +2,8 @@
 This is script for an automated fan control for the Raspberry-Pi. It sets the fan speed depending on the chip temperature. There is even a silentime, where the fan should not spin (f.a at night if the Raspberry-Pi is in your Bedroom and you want to keep it quiet)
 
 # Setup - Hardware
-
+Wiring:  
+![alt text](https://github.com/fload2000/autofan/src/img/wiring.png "Wiring")
 
 # Setup - Script
 
