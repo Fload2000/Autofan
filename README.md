@@ -3,7 +3,7 @@ This is script for an automated fan control for the Raspberry-Pi. It sets the fa
 
 # Setup - Hardware
 Wiring:  
-![alt text](https://github.com/fload2000/autofan/src/img/wiring.png "Wiring")
+![alt text](https://github.com/Fload2000/Autofan/blob/master/src/img/wiring.png "Wiring")
 
 # Setup - Script
 
