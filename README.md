@@ -1,5 +1,5 @@
 # Overview
-This is script for an automated fan control for the Raspberry-Pi. It sets the fan speed depending on the chip temperature. There is even a silentime, where the fan should not spin (e.g. at night if the Raspberry-Pi is in your Bedroom and you want to keep it quiet)
+This is script for an automated fan control for the Raspberry-Pi. It sets the fan speed depending on the chip temperature. There is even a silentime, where the fan should not spin (e.g. at night if the Raspberry-Pi is in your bedroom and you want to keep it quiet)
 
 # Setup - Hardware
 Wiring:  
@@ -8,11 +8,16 @@ Wiring:
 # Setup/Customize - Script
 There a basically three things you can setup/customize in this script:
 ### (1) FanPin
+This is the PWM-pin for the control of the fan. The default pin is `17`. If you need to use another pin, then just change the init value of the `fanPin` variable in line 9.
 
 ### (2) Desired temperature of the CPU
+If you may want your Pi's CPU temperature lower or higher than `36`. Just change the init value of the `desiredTemp` variale in line 12.
 
 ### (3) Time when the fan should not spin
-
+If you have a specific time where the fan should not spin (e.g. at night, when the Pi is in your bedroom). You just have to change 2 values: The start time of the timeframe when the fan isn't allowed to spin and the end time of the timeframe when the fan is allowed to spin.  
+For the start time just change the init value of the `starttime` variable in line 38.   
+And for the end time just change the init value of the `endtime` variable in line 40.   
+Hint: `datetime.time(8,0,0)` == 8:00:00 am (format pattern: HH,mm,ss)
 
 # Start script on startup
 
